@@ -1,4 +1,4 @@
-package com.ui
+package com.ui.home
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -24,7 +24,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.HomeViewModel
 import com.contract.HomeContract
 import com.model.User
 
@@ -34,8 +33,6 @@ private const val TAG = "HomeScreen"
 fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
-    onTitleClicked: (User) -> Unit,
-    onProfileClicked: () -> Unit,
     navigateTo: (String) -> Unit
 ) {
     val state = viewModel.viewState.value
@@ -43,14 +40,6 @@ fun HomeScreen(
     LaunchedEffect(key1 = Unit) {
         viewModel.effect.collect {
             when (it) {
-                is HomeContract.HomeEffect.Navigation.GoToDetail -> {
-                    onTitleClicked.invoke(it.user)
-                }
-
-                is HomeContract.HomeEffect.Navigation.GoToProfile -> {
-                    onProfileClicked.invoke()
-                }
-
                 is HomeContract.HomeEffect.Navigation.NavigateTo -> navigateTo(it.route)
             }
         }
@@ -68,7 +57,6 @@ fun HomeScreen(
         Box(
             modifier = modifier
                 .fillMaxSize()
-                .padding(bottom = 100.dp)
         ) {
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
@@ -84,13 +72,6 @@ fun HomeScreen(
     }
     if (state.errorMsg.isNotEmpty()) {
         Log.i(TAG, "HomeScreen: Users fetched   error${state.errorMsg} ")
-    }
-    FloatingActionButton(
-        onClick = {
-            viewModel.setEvent(HomeContract.HomeEvent.fabProfileClicked)
-        },
-    ) {
-        Icon(Icons.Filled.Add, "Floating action button.")
     }
 
 

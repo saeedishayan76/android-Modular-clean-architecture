@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("shayan.android.lib")
     id("shayan.android.compose.library")
@@ -12,5 +11,8 @@ android {
 }
 
 dependencies {
-    
+    implementation(project(":feature:profile:data"))
+    implementation(project(":feature:profile:domain"))
+    implementation(project(":core:common"))
+
 }

@@ -1,8 +1,7 @@
 package com.shayan.data.di
 
-import android.net.wifi.hotspot2.pps.HomeSp
-import com.HomeRepo
-import com.shayan.data.HomeRepoImpl
+import com.UserRepo
+import com.shayan.data.UserRepoImpl
 import com.shayan.data.remote.HomeApiService
 import dagger.Module
 import dagger.Provides
@@ -22,7 +21,7 @@ object HomeModule {
     }
 
     @Provides
-    fun provideHomeRepo(apiService: HomeApiService):HomeRepo{
-        return HomeRepoImpl(apiService)
+    fun provideHomeRepo(apiService: HomeApiService):UserRepo{
+        return UserRepoImpl(apiService)
     }
 }

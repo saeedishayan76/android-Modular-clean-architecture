@@ -1,13 +1,13 @@
 package com.navigation
 
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.navigation.navigation
-import com.model.User
 import com.ui.DetailScreen
-import com.ui.HomeScreen
+import com.ui.home.HomeScreen
 
 
 private const val TAG = "homeGraph"
@@ -18,23 +18,22 @@ fun NavGraphBuilder.homeNavGraph(navController: NavController) {
     ) {
         composable(HomeScreens.HomeScreen.route) {
             HomeScreen(
-                onTitleClicked = {
-                    Log.i(TAG, "homeNavGraph: user $it")
-                    navController.navigate(HomeScreens.DetailScreen.route+"/${it}")
-                },
-                onProfileClicked = {
-                    // Question
-                    navController.navigate("ProfileRoute")
-                },
                 navigateTo = { route ->
-                   //
+                    navController.navigate(route = route)
                 }
             )
         }
-        composable(HomeScreens.DetailScreen.route+"/{title}") {
-            val title = it.arguments?.get
-            Log.i(TAG, "homeNavGraph: title $title")
-            DetailScreen()
+        composable(
+            HomeScreens.DetailScreen.route + "/{id}",
+            arguments = listOf(navArgument("id") {
+                type = NavType.IntType
+            })
+        ) {
+            val userId = it.arguments?.getInt("id") ?: -1
+            DetailScreen(id = userId)
         }
     }
 }
+
+
+

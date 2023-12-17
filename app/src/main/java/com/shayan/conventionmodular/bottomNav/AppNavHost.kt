@@ -1,7 +1,9 @@
 package com.shayan.conventionmodular.bottomNav
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -23,7 +25,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.navigation.HomeScreens
 import com.navigation.homeNavGraph
-import com.shayan.naviagtion.profileGraph
+import com.naviagtion.noteGraph
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -34,7 +36,7 @@ fun RootNavHost() {
     val navController = rememberNavController()
     val screens = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Profile,
+        BottomBarScreen.Note,
 
         )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -84,12 +86,15 @@ fun RootNavHost() {
             }
         }
     ) {
-        NavHost(
-            navController = navController,
-            startDestination = HomeScreens.HomeNavGraph.route
-        ) {
-            homeNavGraph(navController)
-            profileGraph(navController)
+        Box(modifier = Modifier.padding(it)){
+            NavHost(
+                navController = navController,
+                startDestination = HomeScreens.HomeNavGraph.route
+            ) {
+
+                homeNavGraph(navController)
+                noteGraph(navController)
+            }
         }
     }
     showBottomBar =

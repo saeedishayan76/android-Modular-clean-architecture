@@ -14,14 +14,12 @@ object HomeContract {
 
     sealed class HomeEffect : ViewSideEffect {
         sealed class Navigation : HomeEffect() {
-            data class GoToDetail(val user: User) : Navigation()
+
             data class NavigateTo(val route:String) : Navigation()
-            object GoToProfile : Navigation()
         }
     }
 
     sealed class HomeEvent : ViewEvent {
         data class titleClicked(val user: User) : HomeEvent()
-        object fabProfileClicked: HomeEvent()
     }
 }
