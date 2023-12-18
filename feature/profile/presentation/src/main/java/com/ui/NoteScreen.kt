@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -47,7 +48,7 @@ fun NoteScreen(
             }
         }
         if (state.noteList.isEmpty()) {
-            Text(text = "Profile Screen empty note")
+            Text(text = "Profile Screen empty note", textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = modifier.size(16.dp))
 
         } else {

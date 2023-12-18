@@ -73,6 +73,9 @@ fun AddNoteScreen(
             singleLine = true,
             onValueChange = {
                 viewModel.setEvent(AddNoteContract.AddNoteEvent.BodyTyped(it))
+            },
+            label = {
+
             }
         )
         Text(text = state.bodyValue.errorMsg)
