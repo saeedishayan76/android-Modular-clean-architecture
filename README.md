@@ -7,7 +7,8 @@ The overall architecture in the photo below
 
 <img src="https://s6.uupload.ir/files/sample2_ocvb.jpg" >
 
-Each feature module has its own data, domain, presentation modules,in this way, each module will be completely independent 
+Each feature module has its own data, domain, presentation modules,in this way, each module will be completely independent.
+
 If you look at a nowInAndroid repository, you will notice that the **data** and **domain** modules are included in the core module, but here each module has its own data and domain.
 
 in this part we have 2 feature Home and Note,
