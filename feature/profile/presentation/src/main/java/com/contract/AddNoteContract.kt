@@ -15,6 +15,7 @@ object AddNoteContract {
         val isEnabledBtn: Boolean = false
     ) : ViewState
 
+    //intent
     sealed class AddNoteEvent: ViewEvent {
         data class TitleTyped(val word: String): AddNoteEvent()
         data class BodyTyped(val word: String): AddNoteEvent()

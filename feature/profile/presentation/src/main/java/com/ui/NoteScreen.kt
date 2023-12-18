@@ -64,15 +64,15 @@ fun NoteScreen(
                 }
             }
 
-            Button(modifier = modifier
-                .padding(horizontal = 16.dp)
-                .fillMaxWidth(),
-                onClick = {
-                    viewModel.setEvent(NoteContract.NoteEvent.AddNote)
-                }) {
-                Text(text = "Add Note")
-            }
+        }
 
+        Button(modifier = modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth(),
+            onClick = {
+                viewModel.setEvent(NoteContract.NoteEvent.AddNote)
+            }) {
+            Text(text = "Add Note")
         }
 
     }
