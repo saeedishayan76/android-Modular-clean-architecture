@@ -1,7 +1,7 @@
 **Android Modular by Feature Clean Artitucture**
 
 in this app we im use
-**Modular by feature, Clean Architucture, Mvi,Compose, Convention Plugin, Navigation Graph, Room, Kotlin Ksp**
+**Modular by feature, Mvi , Clean Architucture, Compose , Convention Plugin , Navigation Graph , Room , Kotlin Ksp**
 
 The overall architecture in the photo below
 
